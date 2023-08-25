@@ -22,8 +22,8 @@
     //........................................ Updating the data in the table.
     $pdo = Database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // replace_with_your_table_name, on this project I use the table name 'esp32_table_dht11_leds_update'.
-    // This table is used to store DHT11 sensor data updated by ESP32. 
+    
+    // This table is used to store DHT22 sensor data updated by ESP8266. 
     // This table is also used to store the state of the LEDs, the state of the LEDs is controlled from the "home.php" page. 
     // This table is operated with the "UPDATE" command, so this table will only contain one row.
     $sql = "UPDATE esp8266_table_dht22_leds_update SET temperature = ?, humidity = ?, soilmoisture = ?, status_read_sensor_dht22 = ?, time = ?, date = ? WHERE id = ?";
@@ -42,10 +42,10 @@
     //:::::::: Process to check if "id" is already in use.
     while ($found_empty == false) {
       $id_key = generate_string_id(10);
-      // replace_with_your_table_name, on this project I use the table name 'esp32_table_dht11_leds_record'.
-      // This table is used to store and record DHT11 sensor data updated by ESP32. 
+      
+      // This table is used to store and record DHT22 sensor data updated by ESP8266. 
       // This table is also used to store and record the state of the LEDs, the state of the LEDs is controlled from the "home.php" page. 
-      // This table is operated with the "INSERT" command, so this table will contain many rows.
+      // This table is operated with the "SELECT" command, so this table will contain many rows.
       // Before saving and recording data in this table, the "id" will be checked first, to ensure that the "id" that has been created has not been used in the table.
       $sql = 'SELECT * FROM esp8266_table_dht22_leds_record WHERE id="' . $id_key . '"';
       $q = $pdo->prepare($sql);
@@ -59,8 +59,8 @@
     
     //:::::::: The process of entering data into a table.
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // replace_with_your_table_name, on this project I use the table name 'esp32_table_dht11_leds_record'.
-    // This table is used to store and record DHT11 sensor data updated by ESP32. 
+    
+    // This table is used to store and record DHT22 sensor data updated by ESP8266. 
     // This table is also used to store and record the state of the LEDs, the state of the LEDs is controlled from the "home.php" page. 
     // This table is operated with the "INSERT" command, so this table will contain many rows.
 		$sql = "INSERT INTO esp8266_table_dht22_leds_record (id,board,temperature,humidity,soilmoisture,status_read_sensor_dht22,LED_01,LED_02,time,date) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
