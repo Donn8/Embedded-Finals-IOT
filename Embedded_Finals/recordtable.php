@@ -116,7 +116,7 @@
           <th>BOARD</th>
           <th>TEMPERATURE (°C)</th>
           <th>HUMIDITY (%)</th>
-		  <th>SOIL MOISTURE (%)</th>
+		      <th>SOIL MOISTURE (%)</th>
           <th>STATUS READ SENSOR DHT22</th>
           <th>LED 01</th>
           <th>LED 02</th>
@@ -130,11 +130,11 @@
           $num = 0;
           //------------------------------------------------------------ The process for displaying a record table containing the DHT11 sensor data and the state of the LEDs.
           $pdo = Database::connect();
-          // replace_with_your_table_name, on this project I use the table name 'esp32_table_dht11_leds_record'.
-          // This table is used to store and record DHT11 sensor data updated by ESP32. 
+
+          // This table is used to store and record DHT22 sensor data updated by ESP8266. 
           // This table is also used to store and record the state of the LEDs, the state of the LEDs is controlled from the "home.php" page. 
           // To store data, this table is operated with the "INSERT" command, so this table will contain many rows.
-          $sql = 'SELECT * FROM esp8266_table_dht22_leds_record ORDER BY date, time';
+          $sql = 'SELECT * FROM esp8266_table_dht22_leds_record ORDER BY date, time DESC';
           foreach ($pdo->query($sql) as $row) {
             $date = date_create($row['date']);
             $dateFormat = date_format($date,"d-m-Y");
@@ -145,7 +145,7 @@
             echo '<td class="bdr">'. $row['board'] . '</td>';
             echo '<td class="bdr">'. $row['temperature'] . '</td>';
             echo '<td class="bdr">'. $row['humidity'] . '</td>';
-			echo '<td class="bdr">'. $row['soilmoisture'] . '</td>';
+			      echo '<td class="bdr">'. $row['soilmoisture'] . '</td>';
             echo '<td class="bdr">'. $row['status_read_sensor_dht22'] . '</td>';
             echo '<td class="bdr">'. $row['LED_01'] . '</td>';
             echo '<td class="bdr">'. $row['LED_02'] . '</td>';
