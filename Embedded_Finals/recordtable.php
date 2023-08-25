@@ -7,6 +7,8 @@
       html {font-family: Arial; display: inline-block; text-align: center;}
       p {font-size: 1.2rem;}
       h4 {font-size: 0.8rem;}
+      a:link {color: white; background-color: transparent}
+      a:visited {color: white; background-color: transparent; text-decoration: none;}
       body {margin: 0;}
       /* ----------------------------------- TOPNAV STYLE */
       .topnav {overflow: hidden; background-color: #0c6980; color: white; font-size: 1.2rem;}
@@ -101,7 +103,7 @@
   
   <body>
     <div class="topnav">
-      <h3>EMBEDDED SYSTEM FINALS (IOT w/ MySQL DATABASE)</h3>
+      <h3> <a href = "home.php">EMBEDDED SYSTEM FINALS (IOT w/ MySQL Database)</a></h3>
     </div>
     
     <br>
