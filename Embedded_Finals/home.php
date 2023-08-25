@@ -19,7 +19,7 @@
       .packet {color: #bebebe;}
       .temperatureColor {color: #fd7e14;}
       .humidityColor {color: #1b78e2;}
-	    .soilmoistureColor {color: #8a4603;}
+      .soilmoistureColor {color: #8a4603;}
       .statusreadColor {color: #702963; font-size:12px;}
       .LEDColor {color: #183153;}
       
