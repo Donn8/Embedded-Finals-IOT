@@ -33,7 +33,7 @@ String postData = ""; //--> Variables sent for HTTP POST request data.
 String payload = "";  //--> Variable for receiving response from HTTP POST.
 //======================================== 
 
-//======================================== Variables for DHT11 sensor data.
+//======================================== Variables for DHT22 sensor data.
 float send_Temp;
 int send_Humd;
 String send_Status_Read_DHT22 = "";
@@ -134,7 +134,7 @@ void setup() {
   digitalWrite(LED_01, LOW); //--> Turn off Led LED_01.
   digitalWrite(LED_02, LOW); //--> Turn off Led LED_02.
 
-  //---------------------------------------- Make WiFi on ESP32 in "STA/Station" mode and start connecting to WiFi Router/Hotspot.
+  //---------------------------------------- Make WiFi on ESP8266 in "STA/Station" mode and start connecting to WiFi Router/Hotspot.
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   //---------------------------------------- 
@@ -143,10 +143,10 @@ void setup() {
   Serial.println("-------------");
   Serial.print("Connecting");
 
-  //---------------------------------------- The process of connecting the WiFi on the ESP32 to the WiFi Router/Hotspot.
-  // The process timeout of connecting ESP32 with WiFi Hotspot / WiFi Router is 20 seconds.
-  // If within 20 seconds the ESP32 has not been successfully connected to WiFi, the ESP32 will restart.
-  // I made this condition because on my ESP32, there are times when it seems like it can't connect to WiFi, so it needs to be restarted to be able to connect to WiFi.
+  //---------------------------------------- The process of connecting the WiFi on the ESP8266 to the WiFi Router/Hotspot.
+  // The process timeout of connecting ESP8266 with WiFi Hotspot / WiFi Router is 20 seconds.
+  // If within 20 seconds the ESP8266 has not been successfully connected to WiFi, the ESP8266 will restart.
+  // I made this condition because on my ESP8266, there are times when it seems like it can't connect to WiFi, so it needs to be restarted to be able to connect to WiFi.
 
   int connecting_process_timed_out = 20; //--> 20 = 20 seconds.
   connecting_process_timed_out = connecting_process_timed_out * 2;
@@ -175,12 +175,12 @@ void setup() {
   Serial.println();
   Serial.print("Successfully connected to : ");
   Serial.println(ssid);
-  //Serial.print("IP address: ");
-  //Serial.println(WiFi.localIP());
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
   Serial.println("-------------");
   //---------------------------------------- 
 
-  // Setting up the DHT sensor (DHT11).
+  // Setting up the DHT sensor (DHT22).
   dht.begin();
 
   delay(2000);
@@ -211,10 +211,9 @@ void loop() {
     // The order of the folders I recommend:
     // xampp\htdocs\your_project_folder_name\phpfile.php
     //
-    // ESP32 accesses the data bases at this line of code: 
+    // ESP8266 accesses the data bases at this line of code: 
     // http.begin("http://REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS/REPLACE_WITH_PROJECT_FOLDER_NAME_IN_htdocs_FOLDER/getdata.php");
-    // REPLACE_WITH_YOUR_COMPUTER_IP_ADDRESS = there are many ways to see the IP address, you can google it. 
-    //                                         But make sure that the IP address used is "IPv4 address".
+    
     // Example : http.begin("http://192.168.0.0/ESP32_MySQL_Database/Final/getdata.php");
     http.begin(client,"http://192.168.1.2/Embedded_Finals/getdata.php");  //--> Specify request destination
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");        //--> Specify content-type header
