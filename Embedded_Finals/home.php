@@ -9,6 +9,8 @@
       html {font-family: Arial; display: inline-block; text-align: center;}
       p {font-size: 1.2rem;}
       h4 {font-size: 0.8rem;}
+      a:link {color: white; background-color: transparent}
+      a:visited {color: white; background-color: transparent}
       body {margin: 0;}
       .topnav {overflow: hidden; background-color: #0c6980; color: white; font-size: 1.2rem;}
       .content {padding: 5px; }
@@ -101,9 +103,8 @@
   
   <body>
     <div class="topnav">
-      <h3>EMBEDDED SYSTEM FINALS (IOT w/ MySQL Database)</h3>
+      <h3> <a href = "Web App/home.php/">EMBEDDED SYSTEM FINALS (IOT w/ MySQL Database)</a></h3>    
     </div>
-    
     <br>
     
     <!-- __ DISPLAYS MONITORING AND CONTROLLING ____________________________________________________________________________________________ -->
